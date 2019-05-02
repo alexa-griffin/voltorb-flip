@@ -18,12 +18,16 @@ body {
 
 #board {
   background-color: #11dd88;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .card, .meta-card {
   height: 48px;
   width: 48px;
-  margin: 4px 4px 0 4px;
+  margin: 0 4px;
   background-color: #fff;
   display: inline-flex;
   align-items: center;
