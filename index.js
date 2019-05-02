@@ -1,11 +1,11 @@
 function pushEl(parent, tag, options) {
   var el = document.createElement(tag)
-
   for(var i = 0; i < Object.keys(options).length; i++) {
     el[Object.keys(options)[i]] = options[Object.keys(options)[i]]
   }
-
   parent.appendChild(el)
+
+  return el
 }
 
 var SIZE = 5
@@ -14,8 +14,12 @@ var OPTIONS = [ "voltorb", 1, 2, 3 ]
 function init() {
   var board = document.getElementById("board")
   var score = document.getElementById("score")
+  var rows = document.getElementById("rows")
+  var cols = document.getElementById("cols")
   var points = 1
-  
+
+  score.innerText = points
+
   var cards = []
   var cardEls = []
 
@@ -35,17 +39,30 @@ function init() {
           if(res === "X") {
             alert("you loose")
             board.style.pointerEvents = "none"
+          } else {
+            points *= res
+            score.innerText = points
           }
           pushEl(e.target, "p", {
             innerText: res
           })
+
         },
         className: "card"
       })
     }
-    pushEl()
   }
-  console.log(cards)
+
+  for(let i = 0; i < SIZE; i++) {
+    pushEl(rows, "p", {
+      className: "meta-card",
+      innerText: 1
+    })
+    pushEl(cols, "p", {
+      className: "meta-card",
+      innerText: 1
+    })
+  }
 }
 
 init()

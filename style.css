@@ -12,13 +12,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  font-family: sans-serif;
 }
 
 #board {
   background-color: #11dd88;
 }
 
-.card {
+.card, .meta-card {
   height: 48px;
   width: 48px;
   margin: 4px 4px 0 4px;
@@ -28,4 +30,27 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+#meta {
+  position: relative;
+}
+
+#rows {
+  position: absolute;
+  left: -56px;
+  top: 56px;
+}
+
+#rows .meta-card {
+  display: flex;
+  margin: 0 0 8px 0;
+}
+
+#cols .meta-card {
+  display: inline-flex;
+}
+
+#score {
+  margin-top: 16px;
 }
