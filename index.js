@@ -41,14 +41,14 @@ function init() {
             board.style.pointerEvents = "none"
           } else {
             points *= res
+            e.target.style.pointerEvents = "none"
             score.innerText = points
           }
           pushEl(e.target, "p", {
             innerText: res
           })
-
         },
-        className: "card"
+        className: "card",
       })
     }
   }
@@ -56,13 +56,16 @@ function init() {
   for(let i = 0; i < SIZE; i++) {
     pushEl(rows, "p", {
       className: "meta-card",
-      innerText: 1
+      innerHTML: "p: " + cards[i].reduce((acc, cur) => acc + (typeof cur === "number" ? cur : 0), 0) + " <br /> " + 
+                 "v: " + cards[i].reduce((acc, cur) => acc + (typeof cur === "string" ? 1 : 0), 0)
     })
     pushEl(cols, "p", {
       className: "meta-card",
-      innerText: 1
+      innerHTML: "p: " + cards.reduce((acc, cur) => acc + (typeof cur[i] === "number" ? cur[i] : 0), 0) + " <br /> " + 
+                 "v: " + cards.reduce((acc, cur) => acc + (typeof cur[i] === "string" ? 1 : 0), 0)
     })
   }
+  window.cards = cards
 }
 
 init()
